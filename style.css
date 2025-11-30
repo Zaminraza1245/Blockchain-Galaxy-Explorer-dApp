@@ -1,0 +1,300 @@
+/* ==== GLOBAL RESET ==== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  background: radial-gradient(circle at top, #2b6cf6 0, #120431 30%, #050211 70%);
+  color: #f5f5ff;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 2rem 1rem;
+}
+
+/* ==== APP LAYOUT ==== */
+.app-container {
+  width: 100%;
+  max-width: 960px;
+  background: linear-gradient(145deg, rgba(15, 15, 35, 0.96), rgba(12, 8, 38, 0.98));
+  border-radius: 24px;
+  padding: 2rem;
+  box-shadow:
+    0 0 40px rgba(0, 0, 0, 0.75),
+    0 0 80px rgba(62, 132, 255, 0.3);
+  border: 1px solid rgba(114, 137, 218, 0.4);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Decorative stars */
+.app-container::before,
+.app-container::after {
+  content: "";
+  position: absolute;
+  border-radius: 999px;
+  filter: blur(40px);
+  opacity: 0.45;
+  z-index: -1;
+}
+
+.app-container::before {
+  width: 220px;
+  height: 220px;
+  background: radial-gradient(circle, #4f46e5, transparent 65%);
+  top: -40px;
+  right: -40px;
+}
+
+.app-container::after {
+  width: 260px;
+  height: 260px;
+  background: radial-gradient(circle, #f97316, transparent 65%);
+  bottom: -60px;
+  left: -40px;
+}
+
+/* ==== HEADER ==== */
+header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 1.8rem;
+}
+
+header h1 {
+  font-size: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  letter-spacing: 0.06em;
+}
+
+header h1::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  margin-left: 0.5rem;
+  background: linear-gradient(to right, rgba(148, 163, 255, 0.5), transparent);
+}
+
+header p {
+  color: #c7d2fe;
+  font-size: 0.95rem;
+}
+
+#walletInfo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-top: 0.25rem;
+}
+
+#walletAddress {
+  font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    "Liberation Mono", "Courier New", monospace;
+  font-size: 0.85rem;
+  padding: 0.3rem 0.6rem;
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.9);
+  border: 1px solid rgba(148, 163, 255, 0.4);
+  color: #e5e7eb;
+}
+
+/* ==== BUTTONS ==== */
+button {
+  cursor: pointer;
+  border: none;
+  border-radius: 999px;
+  padding: 0.6rem 1.2rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  transition:
+    transform 0.12s ease-out,
+    box-shadow 0.12s ease-out,
+    background 0.15s ease-out,
+    opacity 0.15s ease-out;
+}
+
+/* Primary actions (connect, transfer, etc.) */
+#connectButton,
+#refreshDataButton,
+#transferButton,
+#burnButton,
+#rewardButton {
+  background: linear-gradient(135deg, #4f46e5, #6366f1);
+  color: #f9fafb;
+  box-shadow: 0 10px 22px rgba(79, 70, 229, 0.5);
+}
+
+#refreshDataButton {
+  background: linear-gradient(135deg, #22c55e, #16a34a);
+  box-shadow: 0 10px 22px rgba(34, 197, 94, 0.45);
+}
+
+#burnButton {
+  background: linear-gradient(135deg, #ef4444, #f97316);
+  box-shadow: 0 10px 22px rgba(248, 113, 113, 0.45);
+}
+
+#rewardButton {
+  background: linear-gradient(135deg, #06b6d4, #3b82f6);
+  box-shadow: 0 10px 22px rgba(59, 130, 246, 0.45);
+}
+
+button:hover {
+  transform: translateY(-1px) scale(1.01);
+  box-shadow: 0 14px 28px rgba(15, 23, 42, 0.7);
+}
+
+button:active {
+  transform: translateY(0) scale(0.99);
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.7);
+}
+
+/* ==== CARDS ==== */
+.card {
+  background: radial-gradient(circle at top left, rgba(79, 70, 229, 0.12), rgba(15, 23, 42, 0.95));
+  border-radius: 18px;
+  padding: 1.25rem 1.4rem;
+  margin-bottom: 1rem;
+  border: 1px solid rgba(148, 163, 255, 0.25);
+  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.75);
+  backdrop-filter: blur(10px);
+}
+
+.card h2 {
+  font-size: 1.05rem;
+  margin-bottom: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: #e5e7eb;
+}
+
+.card h2::before {
+  content: "✦";
+  font-size: 0.9rem;
+  color: #a5b4fc;
+}
+
+/* ==== TOKEN DASHBOARD ==== */
+.token-info {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 0.6rem;
+  margin-bottom: 1rem;
+}
+
+.token-info p {
+  font-size: 0.9rem;
+  background: rgba(15, 23, 42, 0.7);
+  padding: 0.6rem 0.7rem;
+  border-radius: 12px;
+  border: 1px solid rgba(55, 65, 81, 0.85);
+}
+
+/* ===== FORM ELEMENTS ===== */
+label {
+  display: block;
+  font-size: 0.8rem;
+  margin-bottom: 0.35rem;
+  color: #c7d2fe;
+}
+
+input[type="text"],
+input[type="number"] {
+  width: 100%;
+  padding: 0.55rem 0.75rem;
+  border-radius: 10px;
+  border: 1px solid rgba(55, 65, 81, 0.9);
+  background: rgba(15, 23, 42, 0.9);
+  color: #f9fafb;
+  font-size: 0.9rem;
+  margin-bottom: 0.75rem;
+  outline: none;
+  transition:
+    border-color 0.15s ease-out,
+    box-shadow 0.15s ease-out,
+    background 0.15s ease-out;
+}
+
+input[type="text"]::placeholder,
+input[type="number"]::placeholder {
+  color: #6b7280;
+  font-size: 0.8rem;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus {
+  border-color: #6366f1;
+  box-shadow: 0 0 0 1px rgba(99, 102, 241, 0.7);
+  background: rgba(15, 23, 42, 0.95);
+}
+
+/* ===== HINT / STATUS ===== */
+.hint {
+  font-size: 0.75rem;
+  color: #9ca3af;
+  margin-top: 0.1rem;
+}
+
+#statusArea,
+#status {
+  margin-top: 0.3rem;
+  padding: 0.7rem 0.8rem;
+  font-size: 0.82rem;
+  border-radius: 12px;
+  background: rgba(15, 23, 42, 0.9);
+  border: 1px solid rgba(148, 163, 255, 0.35);
+  min-height: 2.4rem;
+  display: flex;
+  align-items: center;
+}
+
+/* Default status color (script will override color) */
+#statusArea,
+#status {
+  color: #e5e7eb;
+}
+
+/* ==== LAYOUT FOR ACTION ROWS ==== */
+.card button {
+  margin-top: 0.15rem;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (min-width: 768px) {
+  header {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  header p {
+    max-width: 60%;
+  }
+}
+
+@media (max-width: 600px) {
+  .app-container {
+    padding: 1.5rem 1.1rem;
+  }
+
+  header h1 {
+    font-size: 1.6rem;
+  }
+
+  button {
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+  }
+}

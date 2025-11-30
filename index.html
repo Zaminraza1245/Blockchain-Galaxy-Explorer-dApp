@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Galaxy Explorer dApp – GalaxyToken (GLX)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Main styles -->
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Ethers.js v5 via CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/ethers@5.7.2/dist/ethers.umd.min.js"></script>
+</head>
+<body>
+  <div class="app-container">
+    <!-- ====== HERO / HEADER CARD ====== -->
+    <header class="hero-card">
+      <div class="hero-content">
+        <div class="hero-icon">🌌</div>
+        <div>
+          <h1>Galaxy Explorer dApp</h1>
+          <p>Manage your <strong>GalaxyToken (GLX)</strong> for interstellar missions.</p>
+        </div>
+      </div>
+
+      <div class="hero-actions">
+        <button id="connectWalletBtn" class="primary-btn">
+          Connect Wallet
+        </button>
+        <p id="connectedAddress" class="wallet-address">
+          Not connected
+        </p>
+      </div>
+    </header>
+
+    <!-- ====== TOKEN DASHBOARD ====== -->
+    <section class="card">
+      <h2>Token Dashboard</h2>
+      <div class="token-info">
+        <p>
+          <strong>Token:</strong>
+          <span id="tokenName">-</span>
+          (<span id="tokenSymbol">-</span>)
+        </p>
+        <p>
+          <strong>Total Supply:</strong>
+          <span id="totalSupply">-</span> GLX
+        </p>
+        <p>
+          <strong>Your Balance:</strong>
+          <span id="userBalance">-</span> GLX
+        </p>
+      </div>
+      <button id="refreshBalancesBtn" class="secondary-btn">
+        🔄 Refresh Balances
+      </button>
+    </section>
+
+    <!-- ====== TRANSFER SECTION ====== -->
+    <section class="card">
+      <h2>🚀 Transfer GLX</h2>
+      <div class="form-group">
+        <label for="transferTo">Recipient Address</label>
+        <input
+          type="text"
+          id="transferTo"
+          placeholder="0xRecipient..."
+          autocomplete="off"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="transferAmount">Amount (GLX)</label>
+        <input
+          type="number"
+          id="transferAmount"
+          min="0"
+          step="1"
+          placeholder="100"
+        />
+      </div>
+
+      <button id="transferBtn" class="primary-btn">
+        Send GLX
+      </button>
+      <p class="hint">
+        Use this to send fuel tokens to fellow explorers.
+      </p>
+    </section>
+
+    <!-- ====== BURN SECTION ====== -->
+    <section class="card">
+      <h2>🔥 Burn GLX (Spend Fuel)</h2>
+      <div class="form-group">
+        <label for="burnAmount">Amount to Burn (GLX)</label>
+        <input
+          type="number"
+          id="burnAmount"
+          min="0"
+          step="1"
+          placeholder="50"
+        />
+      </div>
+
+      <button id="burnBtn" class="danger-btn">
+        Burn GLX
+      </button>
+      <p class="hint">
+        Burning simulates spending resources on missions and reduces total supply.
+      </p>
+    </section>
+
+    <!-- ====== REWARD SECTION ====== -->
+    <section class="card">
+      <h2>🎖 Reward Explorer (Owner Only)</h2>
+      <div class="form-group">
+        <label for="rewardTo">Explorer Address</label>
+        <input
+          type="text"
+          id="rewardTo"
+          placeholder="0xExplorer..."
+          autocomplete="off"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="rewardAmount">Reward Amount (GLX)</label>
+        <input
+          type="number"
+          id="rewardAmount"
+          min="0"
+          step="1"
+          placeholder="25"
+        />
+      </div>
+
+      <button id="rewardBtn" class="secondary-btn">
+        Reward Explorer
+      </button>
+      <p class="hint">
+        Only Mission Control (the contract owner) can use this. If you are not
+        the owner, the transaction will revert on-chain.
+      </p>
+    </section>
+
+    <!-- ====== STATUS / ACTIVITY ====== -->
+    <section class="card">
+      <h2>📡 Status & Activity</h2>
+      <div id="status" class="status-area">
+        Ready.
+      </div>
+    </section>
+  </div>
+
+  <!-- Your app logic -->
+  <script src="script.js"></script>
+</body>
+</html>

@@ -117,7 +117,7 @@ const CONTRACT_ADDRESS = "0xYOUR_DEPLOYED_ADDRESS";
 
 ## 8. Contract Details
 
-- **Network:** Sepolia testnet (example)
-- **Contract Address:** `0xYOUR_DEPLOYED_ADDRESS`
+- **Network:** Harhat local 
+- **Contract Address:** ``
 - **Token Symbol:** GLX
 - **Decimals:** 18

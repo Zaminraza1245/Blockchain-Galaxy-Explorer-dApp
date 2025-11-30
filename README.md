@@ -115,11 +115,6 @@ const CONTRACT_ADDRESS = "0xYOUR_DEPLOYED_ADDRESS";
   - Connected to the correct testnet (Sepolia or whichever you deployed to).
 - Click **"Connect Wallet"** and start interacting with the dApp.
 
-## 7. Screenshots / Demo
-
-- `screenshots/demo.png` – add a screenshot of the running dApp.
-- Optionally add a link to a screen recording demo.
-
 ## 8. Contract Details
 
 - **Network:** Sepolia testnet (example)
